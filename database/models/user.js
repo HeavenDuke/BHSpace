@@ -13,15 +13,9 @@ module.exports = function (sequelize, DataTypes) {
         username: {
             type: DataTypes.STRING(30),
             allowNull: false,
+            unique: true,
             validate: {
                 len: [2, 30]
-            }
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true
             }
         },
         password: {
@@ -30,6 +24,10 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 notEmpty: true
             }
+        },
+        epic: {
+            type: DataTypes.TEXT,
+            allowNull: true
         }
     }, {
         underscored: true

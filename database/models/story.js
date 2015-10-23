@@ -16,6 +16,11 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 notEmpty: true
             }
+        },
+        status: {
+            type: DataTypes.ENUM('modifying', 'validating', 'accepted', 'rejected'),
+            allowNull: false,
+            defaultValue: 'modifying'
         }
     }, {
         underscored: true

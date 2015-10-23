@@ -35,10 +35,12 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use('/', function(req, res, next) {
-  console.log(req.sessionID)
-  res.render('index', { title: 'Express' })
-});
+//app.use('/', function(req, res, next) {
+//  console.log(req.sessionID)
+//  res.render('index', { title: 'Express' })
+//});
+
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

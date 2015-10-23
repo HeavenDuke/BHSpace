@@ -5,5 +5,3 @@
 exports.user = require('./user');
 
 exports.story = require('./story');
-
-exports.epic = require('./epic');
