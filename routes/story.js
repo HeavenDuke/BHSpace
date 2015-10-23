@@ -14,6 +14,7 @@ router.put('/update', controllers.update);
 router.put('/upload', controllers.upload);
 router.get('/next', controllers.next);
 router.get('/previous', controllers.previous);
+router.get('/random', controllers.random);
 router.get('/:storyId', controllers.info);
 
 module.exports = router;

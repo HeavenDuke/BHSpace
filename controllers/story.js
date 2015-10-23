@@ -35,3 +35,8 @@ exports.next = function (req, res, next) {
     console.log('next');
     res.json({"url": req.originalUrl});
 };
+
+exports.random = function (req, res, next) {
+    console.log('random');
+    res.json({"url": req.originalUrl});
+};
