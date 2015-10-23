@@ -40,3 +40,8 @@ exports.random = function (req, res, next) {
     console.log('random');
     res.json({"url": req.originalUrl});
 };
+
+exports.rate = function (req, res, next) {
+    console.log('rate');
+    res.json({"url": req.originalUrl});
+}

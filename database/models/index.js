@@ -6,3 +6,7 @@ exports.User = require('./user');
 exports.story = require('./story');
 
 exports.rate = require('./rate');
+
+exports.epic = require('./epic');
+
+exports.plot = require('./plot');

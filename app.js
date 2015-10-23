@@ -55,11 +55,11 @@ app.use(function (req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function (err, req, res, next) {
-    console.log(err.message);
     res.status(err.status || 500);
-    res.render('index', {
-      message: err.message,
-      error: err
+    console.log(err.message);
+    res.json({
+      status: err.status,
+      message: err.message
     });
   });
 }
@@ -69,10 +69,14 @@ if (app.get('env') === 'development') {
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   console.log(err.message);
-  res.render('index', {
-    message: err.message,
-    error: {}
+  res.json({
+    status: err.status,
+    message: err.message
   });
+  //res.render('index', {
+  //  message: err.message,
+  //  error: {}
+  //});
 });
 
 var server = app.listen(3000, function() {

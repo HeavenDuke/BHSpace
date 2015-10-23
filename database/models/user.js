@@ -24,10 +24,6 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 notEmpty: true
             }
-        },
-        epic: {
-            type: DataTypes.TEXT,
-            allowNull: true
         }
     }, {
         underscored: true
