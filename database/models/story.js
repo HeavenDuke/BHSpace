@@ -21,6 +21,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.ENUM('modifying', 'validating', 'accepted', 'rejected'),
             allowNull: false,
             defaultValue: 'modifying'
+        },
+        rating: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            validate: {
+                max: 1,
+                min: 5
+            }
         }
     }, {
         underscored: true

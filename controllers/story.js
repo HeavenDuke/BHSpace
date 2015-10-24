@@ -15,11 +15,17 @@ exports.create = function (req ,res, next) {
 };
 
 exports.update = function (req, res, next) {
-    res.json({"url": req.originalUrl});
+    var Story = global.db.models.story;
+    var query = {
+        storyId: req.params.storyId
+    };
 };
 
 exports.upload = function (req, res, next) {
-    res.json({"url": req.originalUrl});
+    var Story = global.db.models.story;
+    var query = {
+        storyId: req.params.storyId
+    };
 };
 
 exports.info = function (req, res, next) {
@@ -71,6 +77,28 @@ exports.random = function (req, res, next) {
 };
 
 exports.rate = function (req, res, next) {
-    console.log('rate');
-    res.json({"url": req.originalUrl});
+    var Story = global.db.models.story;
+    var Rate = global.db.models.rate;
+    var query = {
+        storyId: req.params.storyId
+    };
+    var rateQuery = {
+        userId: req.session.user.userId
+    };
+    var rating = {
+        rating: req.body.rating
+    };
+    Story.findONe({where: query}).then(function (story) {
+        if (!story) {
+            return next(new Error.Error.StoryNotExist());
+        }
+        else {
+            Story.getRaters({where: rateQuery}).then(function (raters) {
+                res.json({
+                    status: 200,
+                    raters: raters
+                });
+            });
+        }
+    });
 }

@@ -10,9 +10,9 @@ var router = express.Router({
 router.post('/shuffle', controllers.shuffle);
 router.get('/', controllers.list);
 router.post('/', controllers.create);
-router.put('/update', controllers.update);
-router.put('/upload', controllers.upload);
-router.put('/rate', controllers.rate);
+router.post('/update/:storyId', controllers.update);
+router.post('/upload/:storyId', controllers.upload);
+router.post('/rate/storyId', controllers.rate);
 router.get('/next', controllers.next);
 router.get('/previous', controllers.previous);
 router.get('/random', controllers.random);
