@@ -16,6 +16,9 @@ router.get('/', function (req, res, next) {
 });
 
 router.use('/user', modules.user);
+
+router.use(Authentication.authentication);
+
 router.use('/story', modules.story);
 
 module.exports = router;

@@ -70,7 +70,7 @@ var HaveLoggedIn = (function (superClass) {
     function HaveLoggedIn(message) {
         this.message = message != null ? message : exports.MESSAGES.HAVE_LOGGED_IN;
         this.name = 'HaveLoggedIn';
-        this.status = 401;
+        this.status = 500;
         Error.captureStackTrace(this, HaveLoggedIn);
     }
 
@@ -82,11 +82,35 @@ var DuplicateUser = (function (superClass) {
     function DuplicateUser(message) {
         this.message = message != null ? message : exports.MESSAGES.DUPLICATE_USER;
         this.name = 'DuplicateUser';
-        this.status = 401;
+        this.status = 500;
         Error.captureStackTrace(this, DuplicateUser);
     }
 
     return DuplicateUser;
+})(Error);
+
+var StoryNotExist = (function (superClass) {
+    extend(StoryNotExist, superClass);
+    function StoryNotExist(message) {
+        this.message = message != null ? message : exports.MESSAGES.STORY_NOT_EXIST;
+        this.name = 'StoryNotExist';
+        this.status = 404;
+        Error.captureStackTrace(this, StoryNotExist);
+    }
+
+    return StoryNotExist;
+})(Error);
+
+var IllegalStoryAccess = (function (superClass) {
+    extend(IllegalStoryAccess, superClass);
+    function IllegalStoryAccess(message) {
+        this.message = message != null ? message : exports.MESSAGES.ILLEGAL_STORY_ACCESS;
+        this.name = 'IllegalStoryAccess';
+        this.status = 401;
+        Error.captureStackTrace(this, IllegalStoryAccess);
+    }
+
+    return IllegalStoryAccess;
 })(Error);
 
 exports.MESSAGES = {
@@ -94,8 +118,10 @@ exports.MESSAGES = {
     INVALID_LOGIN: '您输入的昵称或密码有误，请重新输入',
     DUPLICATE_USER: '您所使用的名字已经被注册过了哟',
     HAVE_LOGGED_IN: '您已登陆',
+    STORY_NOT_EXIST: '您在寻找一段不存在的故事',
     NOT_LOGGED_IN: '您还没有登陆',
-    INVALID_USER_UPDATE: '您输入的密码有误，请重新输入'
+    INVALID_USER_UPDATE: '您输入的密码有误，请重新输入',
+    ILLEGAL_STORY_ACCESS: '本故事尚未发布，请不要偷窥哦'
 };
 
 exports.Error = {
@@ -104,5 +130,7 @@ exports.Error = {
     DuplicateUser: DuplicateUser,
     HaveLoggedIn: HaveLoggedIn,
     NotLoggedIn: NotLoggedIn,
-    InvalidUserUpdate: InvalidUserUpdate
+    InvalidUserUpdate: InvalidUserUpdate,
+    StoryNotExist: StoryNotExist,
+    IllegalStoryAccess: IllegalStoryAccess
 };
