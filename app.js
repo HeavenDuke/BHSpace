@@ -79,6 +79,15 @@ app.use(function (err, req, res, next) {
   //});
 });
 
+app.on('uncaughtException', function(err, req, res, next) {
+  res.status(err.status || 500);
+  console.log(err.message);
+  res.json({
+    status: err.status,
+    message: err.message
+  });
+});
+
 var server = app.listen(3000, function() {
   console.log("Server listening at: " + server.address().address + ":" + server.address().port);
 });

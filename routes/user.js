@@ -3,15 +3,16 @@
  */
 var express = require('express');
 var controllers = require('../controllers').user;
+var Authentication = require('../utils/Authentication');
 var router = express.Router({
     mergeParams: true
 });
 
-router.get('/', controllers.info);
-router.post('/login', controllers.login);
-router.post('/register', controllers.register);
-router.post('/logout', controllers.logout);
+router.get('/', Authentication.authentication, controllers.info);
+router.post('/login', Authentication.unAuthentication, controllers.login);
+router.post('/register', Authentication.unAuthentication, controllers.register);
+router.post('/logout', Authentication.authentication, controllers.logout);
 router.get('/:userId', controllers.info);
-router.put('/', controllers.update);
+router.post('/', controllers.update);
 
 module.exports = router;
