@@ -8,8 +8,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                max: 1,
-                min: 5
+                max: 5,
+                min: 1
             }
         }
     }, {
